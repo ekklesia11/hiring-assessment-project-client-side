@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import './UserTodo.css'
 
 class UserTodo extends Component {
   constructor (props) {
     super(props);
     this.state = {
       userTodos: [],
+      viewOption: '모든 투두',
     }
   }
 
@@ -23,7 +25,9 @@ class UserTodo extends Component {
   }
 
   selectOption = (e) => {
-    console.log(e.target.selectedOptions)
+    this.setState({
+      viewOption: e.target.selectedOptions[0].value,
+    })
   }
 
   render() {
@@ -34,6 +38,15 @@ class UserTodo extends Component {
           <option>미완료된 투두</option>
           <option>완료된 투두</option>
         </select>
+        <div className='todo-list'>
+          {
+            this.state.viewOption === '미완료된 투두' ? 
+            this.state.userTodos.filter(todo => !todo.completed).map((todo, i) => <div key={i} className='each-todo'>{todo.title}</div>) :
+            this.state.viewOption === '완료된 투두' ?
+            this.state.userTodos.filter(todo => todo.completed).map((todo, i) => <div key={i} className='each-todo'>{todo.title}</div>) :
+            this.state.userTodos.map((todo, i) => <div key={i} className='each-todo'>{todo.title}</div>)
+          }
+        </div>
       </div>
     )
   }

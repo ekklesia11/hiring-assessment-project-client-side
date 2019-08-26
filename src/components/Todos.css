@@ -11,3 +11,10 @@
   text-decoration: none;
   color: black;
 }
+.each-user {
+  margin: 10px;
+  cursor: pointer;
+}
+.each-user:active {
+  background: #c2c2c2;
+}

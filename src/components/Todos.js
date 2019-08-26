@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './Todo.css'
+import './Todos.css'
 
 import HomeBtn from './HomeBtn'
 
@@ -45,7 +45,9 @@ class Todos extends Component {
           <h2>유저리스트</h2>
           <div className='user-list'>
             {this.state.users.map(user => 
-              <div className='each-user' id={user.id} key={user.id} onClick={this.selectUser}>{user.name}</div>
+              <div className='each-user'  
+              style={{backgroundColor: this.state.selectedUser === user.id ? '#c2c2c2' : 'none'}}
+              id={user.id} key={user.id} onClick={this.selectUser}>{user.name}</div>
               )}
           </div>
         </div>
