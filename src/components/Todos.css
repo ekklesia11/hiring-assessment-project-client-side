@@ -18,3 +18,13 @@
 .each-user:active {
   background: #c2c2c2;
 }
+.go-back-btn {
+  text-decoration: none;
+  color: black;
+  background: yellow;
+  position: relative;
+  padding: 5px;
+  margin: 5px;
+  display: inline-block;
+  cursor: pointer;
+}

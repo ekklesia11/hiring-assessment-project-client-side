@@ -29,10 +29,17 @@ class EachUser extends Component {
     }
   }
 
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
   render() {
     return (
       <div>
         <HomeBtn />
+        <div className='go-back-btn'>
+          <div onClick={this.goBack}>뒤로가기</div>
+        </div>
         <div style={{display: this.state.userProfileOn ? 'block' : 'none'}}>
           <UserProfile user={this.props.match} />
         </div>

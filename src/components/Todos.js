@@ -34,6 +34,10 @@ class Todos extends Component {
       selectedUser: e.target.id
     })
   }
+
+  goBack = () => {
+    this.props.history.goBack();
+  }
   
   render() {
     return (
@@ -53,6 +57,9 @@ class Todos extends Component {
         </div>
         <div className='select-user-btn'>
           <Link to={`/users/${this.state.selectedUser}`} className='select-user-btn-link'>선택</Link>
+        </div>
+        <div className='go-back-btn'>
+          <div onClick={this.goBack}>뒤로가기</div>
         </div>
       </div>
     )
