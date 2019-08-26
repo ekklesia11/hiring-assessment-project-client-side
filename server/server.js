@@ -19,18 +19,23 @@ app.use(async (req, res, next) => {
   next();
 })
 
-app.get('/*', (req, res) => {
+app.get('/*', async (req, res) => {
   // console.log(req.url)
   let url = req.url;
+  let id = url.split('/')[1];
   if (req.url === '/') {
     res.send(JSON.stringify(data.users))
-  } else {
-    let id = url.split('/')[1];
+  } else if (!isNaN(Number(id))) {
     let user = data.users.filter(user => user.id === Number(id))
     res.send(JSON.stringify(user[0]));
+  } else {
+    let last = id[id.length - 1];
+    let todos = await fetch(`https://koreanjson.com/todos?userId=${last}`)
+      .then(res => res.json())
+      .then(todos => todos)
+    res.send(JSON.stringify(todos));
   }
 })
-
 
 
 

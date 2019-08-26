@@ -15,7 +15,7 @@ class UserTodo extends Component {
   }
 
   async bringUserTodos() {
-    let userTodos = await fetch(`https://koreanjson.com/todos?userId=${this.props.user.params.id}`)
+    let userTodos = await fetch(`http://localhost:5000/todos?userId=${this.props.user.params.id}`)
       .then(res => res.json())
       .then(todos => todos)
       .catch(err => console.error(err));
@@ -38,6 +38,15 @@ class UserTodo extends Component {
           <option>미완료된 투두</option>
           <option>완료된 투두</option>
         </select>
+        <span>
+          {
+            this.state.viewOption === '미완료된 투두' ? 
+            this.state.userTodos.filter(todo => !todo.completed).length :
+            this.state.viewOption === '완료된 투두' ?
+            this.state.userTodos.filter(todo => todo.completed).length :
+            this.state.userTodos.length
+          }
+        </span>
         <div className='todo-list'>
           {
             this.state.viewOption === '미완료된 투두' ? 
