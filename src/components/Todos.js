@@ -17,13 +17,13 @@ class Todos extends Component {
   componentDidMount() {
     this.bringUserList();
   }
-
+ 
   async bringUserList() {
-    let usersArr = await fetch('https://koreanjson.com/users')
+    let usersArr = await fetch('http://localhost:5000/')
       .then(res => res.json())
       .then(users => users)
       .catch(err => console.error(err));
-    
+
       this.setState({
       users: usersArr,
     })

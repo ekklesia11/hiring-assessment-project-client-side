@@ -15,7 +15,7 @@ class UserProfile extends Component {
   }
 
   async bringUserProfile() {
-    let user = await fetch(`https://koreanjson.com/users/${this.props.user.params.id}`)
+    let user = await fetch(`http://localhost:5000/${this.props.user.params.id}`)
       .then(res => res.json())
       .then(user => user)
       .catch(err => console.error(err));
