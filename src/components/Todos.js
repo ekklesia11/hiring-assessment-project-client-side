@@ -40,6 +40,7 @@ class Todos extends Component {
   }
   
   render() {
+    console.log(this.state.selectedUser)
     return (
       <div>
         <div>
@@ -51,7 +52,7 @@ class Todos extends Component {
             {this.state.users.map(user => 
               <div className='each-user'  
               style={{backgroundColor: this.state.users.length > 0 && 
-                this.state.selectedUser === user.id ? 'red' : 'none'}}
+                Number(this.state.selectedUser) === user.id ? 'red' : 'white'}}
               id={user.id} key={user.id} onClick={this.selectUser}>{user.name}</div>
               )}
           </div>
