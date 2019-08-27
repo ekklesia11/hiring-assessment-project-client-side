@@ -1,4 +1,4 @@
-.select-user-btn {
+/* .select-user-btn {
   text-decoration: none;
   color: black;
   background: yellow;
@@ -6,7 +6,7 @@
   padding: 5px;
   margin: 5px;
   display: inline-block;
-}
+} */
 .select-user-btn-link {
   text-decoration: none;
   color: black;
@@ -18,7 +18,7 @@
 .each-user:active {
   background: #c2c2c2;
 }
-.go-back-btn {
+/* .go-back-btn {
   text-decoration: none;
   color: black;
   background: yellow;
@@ -27,4 +27,4 @@
   margin: 5px;
   display: inline-block;
   cursor: pointer;
-}
+} */

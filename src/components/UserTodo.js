@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './UserTodo.css'
+import HomeBtn from './HomeBtn'
 
 class UserTodo extends Component {
   constructor (props) {
@@ -15,7 +17,7 @@ class UserTodo extends Component {
   }
 
   async bringUserTodos() {
-    let userTodos = await fetch(`http://localhost:5000/todos?userId=${this.props.user.params.id}`)
+    let userTodos = await fetch(`http://localhost:5000/todos?userId=${this.props.match.params.id}`)
       .then(res => res.json())
       .then(todos => todos)
       .catch(err => console.error(err));
@@ -33,6 +35,11 @@ class UserTodo extends Component {
   render() {
     return (
       <div>
+        <HomeBtn />
+        <div className='go-back-btn'>
+          <button onClick={this.goBack}>뒤로가기</button>
+        </div>
+
         <select onChange={this.selectOption}>
           <option>모든 투두</option>
           <option>미완료된 투두</option>
@@ -56,6 +63,8 @@ class UserTodo extends Component {
             this.state.userTodos.map((todo, i) => <div key={i} className='each-todo'>{todo.title}</div>)
           }
         </div>
+        <Link to={`/users/${this.props.match.params.id}`} ><button>유저프로필</button></Link>
+        <Link to={`/users/${this.props.match.params.id}/todos`} ><button>투두</button></Link>
       </div>
     )
   }

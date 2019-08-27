@@ -50,16 +50,17 @@ class Todos extends Component {
           <div className='user-list'>
             {this.state.users.map(user => 
               <div className='each-user'  
-              style={{backgroundColor: this.state.selectedUser === user.id ? '#c2c2c2' : 'none'}}
+              style={{backgroundColor: this.state.users.length > 0 && 
+                this.state.selectedUser === user.id ? 'red' : 'none'}}
               id={user.id} key={user.id} onClick={this.selectUser}>{user.name}</div>
               )}
           </div>
         </div>
-        <div className='select-user-btn'>
-          <Link to={`/users/${this.state.selectedUser}`} className='select-user-btn-link'>선택</Link>
-        </div>
-        <div className='go-back-btn'>
-          <div onClick={this.goBack}>뒤로가기</div>
+          <Link to={`/users/${this.state.selectedUser}`} className='select-user-btn-link'>
+            <button>선택</button>
+          </Link>
+        <div>
+          <button onClick={this.goBack}>뒤로가기</button>
         </div>
       </div>
     )
