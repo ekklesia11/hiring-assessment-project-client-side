@@ -17,7 +17,7 @@ class UserTodo extends Component {
   }
 
   async bringUserTodos() {
-    let userTodos = await fetch(`http://localhost:5000/todos?userId=${this.props.match.params.id}`)
+    let userTodos = await fetch(`http://localhost:5000/todos/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(todos => todos)
       .catch(err => console.error(err));
